@@ -33,11 +33,52 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',  # for django-allauth
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Authentication
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #Local Apps
+    # 'account',
+    'post',
+
 ]
+
+
+
+#Authentication
+# LOGIN_URL = 'login' # login url
+LOGOUT_URL = 'logout'  # logout url
+LOGIN_REDIRECT_URL  = 'profile'  # login redirect url
+# LOGOUT_REDIRECT_URL = 'login'  #logout redirect url
+
+#Ensure SITe_ID is set sites app
+SITE_ID = 1  # For django allauth
+
+
+# Django Allauth Authentication
+# Add the 'allauth' backend to AUTHENTICATION_BACKEND and keep default ModelBackend
+AUTHENTICATION_BACKENDS = [ 'django.contrib.auth.backends.ModelBackend',
+                           'allauth.account.auth_backends.AuthenticationBackend']
+
+# ONLY for development/testing use console
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+# Custom allauth settings
+# Use email as the primary identifier
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+# Make email verification mandatory to avoid junk email accounts
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# Eliminate need to provide username, as it's a very old practice
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_LOGOUT_REDIRECT_URL = "/accounts/login"
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_UR = 'account_login'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +95,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,3 +159,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
