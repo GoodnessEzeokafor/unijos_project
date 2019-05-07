@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.conf import settings
 # Create your models here.
 
@@ -40,8 +41,11 @@ class Profile(models.Model):
         choices=LEVEL_CHOICE,
         default= '100lvl'
     )
-    interests = models.CharField(max_length=40, null=True, blank=True)
+    interests = models.CharField(max_length=255, null=True, blank=True)
     depertment = models.CharField(max_length=40, null=True, blank=True)
+    date_profile_created = models.DateTimeField(auto_now_add=True)
+    date_profile_updated = models.DateTimeField(auto_now=True)
+
     # photo = models.ImageField(upload_to='%Y/%m/%d/{}'.format(id))
 
     # level 
