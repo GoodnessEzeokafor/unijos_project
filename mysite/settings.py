@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #Local Apps
     # 'account',
     'post',
+    'profiles',
 
 ]
 
@@ -54,7 +55,7 @@ INSTALLED_APPS = [
 #Authentication
 # LOGIN_URL = 'login' # login url
 LOGOUT_URL = 'logout'  # logout url
-LOGIN_REDIRECT_URL  = 'profile'  # login redirect url
+LOGIN_REDIRECT_URL  = 'profiles:profile_dashboard'  # login redirect url
 # LOGOUT_REDIRECT_URL = 'login'  #logout redirect url
 
 #Ensure SITe_ID is set sites app

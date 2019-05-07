@@ -7,23 +7,14 @@
     <title>School Share</title>
 </head>
 <body>
-    {% block header %}
-        <h3>School Share</h3>
-        
-      <strong>Navbar:</strong>
-        {% if user.is_authenticated %}
-        <!-- <a href="{% url 'account_email' %}">Change E-mail</a> | -->
-        <a href="{% url 'account_logout' %}">Sign Out</a>
-        {% else %}
-        <a href="{% url 'account_login' %}">Sign In</a> |
-        <a href="{% url 'account_signup' %}">Sign Up</a>
-        {% endif %}
-      
-        <hr />
+    <!-- Block Header -->
+    {% block header %}      
     {% endblock %}    
-
+<!-- Endblock Header -->
+<!-- Block Content -->
     {% block content %}
     {% endblock %}
+<!-- Endblock Content -->
 
 </body>
 </html>
