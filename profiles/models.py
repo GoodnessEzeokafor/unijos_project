@@ -46,7 +46,7 @@ class Profile(models.Model):
     date_profile_created = models.DateTimeField(auto_now_add=True)
     date_profile_updated = models.DateTimeField(auto_now=True)
 
-    # photo = models.ImageField(upload_to='%Y/%m/%d/{}'.format(id))
+    photo = models.ImageField(upload_to='%Y/%m/%d/{}'.format(id))
 
     # level 
 
