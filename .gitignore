@@ -7,3 +7,4 @@
 *.sqlite3
 **/media/**
 **/media_cdn/**
+**.db.sqlite3**
