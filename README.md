@@ -6,20 +6,20 @@ Make sure python, pipenv, pip and django is installed
 on your machine.
 ### Procedure
 #### Step 1
-    mkdir unijos_proj
-    cd unijos_proj
-    pipenv --python 3.5 (depending on your version)
-    pipenv shell
-    pipenv install django==2.0.6 django-allauth django-crispy-forms pillow
-    django-admin startproject mysite .
-    python manage.py runserver
+    $ mkdir unijos_proj
+    $ cd unijos_proj
+    $ pipenv --python 3.5 (depending on your version)
+    $ pipenv shell
+    $ pipenv install django==2.0.6 django-allauth django-crispy-forms pillow
+    $ django-admin startproject mysite .
+    $ python manage.py runserver
 
 ### Or Simply clone this repo
-    git clone [repo link]
-    cd project_name
-    pipenv shell
-    pipenv install
-    python manage.py runserver
+    $ git clone [repo link]
+    $ cd project_name
+    $ pipenv shell
+    $ pipenv install
+    $ python manage.py runserver
 
 change the python_version to your system version in your Pipfile
 ### Install Redis On Ubuntu
