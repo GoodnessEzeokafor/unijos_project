@@ -1,6 +1,7 @@
 Unijos School Share Project
 =============
 ## DESCRIPTION
+A web app where students can  share educational resources/materials among themselves  
 Make sure python, pipenv, pip and django is installed
 on your machine.
 ### Procedure
@@ -17,10 +18,10 @@ on your machine.
     git clone [repo link]
     cd project_name
     pipenv shell
-    pipenv activate
     pipenv install
     python manage.py runserver
 
+change the python_version to your system version in your Pipfile
 ### Install Redis On Ubuntu
     $ wget http://download.redis.io/releases/redis-5.0.4.tar.gz
     $ tar xzf redis-5.0.4.tar.gz
