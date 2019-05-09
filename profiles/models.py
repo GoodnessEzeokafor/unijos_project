@@ -8,8 +8,8 @@ from django.conf import settings
 
 # Upload Paths
 
-def get_image_path(instance):
-    return "%Y/%m/%d/{}".format(instance.id)
+def get_image_path(instance, filename):
+    return "user_{}/{}".format(instance, instance.id)
 
 class Profile(models.Model):
     LEVEL_CHOICE = (

@@ -45,8 +45,9 @@ INSTALLED_APPS = [
 
     #Local Apps
     # 'account',
-    'post',
-    'profiles',
+    'post',  # powers the post functionaliti
+    'profiles',  # powers the profile functionality
+    'feedback'  # powers the feedback system
 
 ]
 
@@ -147,7 +148,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Lagos'
 
 USE_I18N = True
 

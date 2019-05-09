@@ -25,10 +25,12 @@ from . import views
 # from 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('account/', include('account.urls')),
+    path('', views.home_view, name="home"),
     path('accounts/', include("allauth.urls")),  # Django Allauth
     path('profile/',include("profiles.urls", namespace="profiles")),
+    path('feedback/', include('feedback.urls', namespace="feedback"))
 ]
+
 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

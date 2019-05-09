@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path, include, re_path
 from . import views
 
 
@@ -10,6 +10,7 @@ urlpatterns = [
     # path('create/', views.CreateProfileView.as_view(), name="profile_create")
     # path('create/', views.create_profile_view, name="profile_create")
     path('create/', views.CreateProfileView.as_view(), name="profile_create"),
-    path('<int:pk>/edit/', views.UpdateProfileView.as_view(), name="profile_edit")
+    re_path('edit/(?P<pk>[\w-]+)/', views.UpdateProfileView.as_view(), name="profile_edit")
 ]
+# <int:pk>/
 
