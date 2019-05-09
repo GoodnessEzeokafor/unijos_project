@@ -1,8 +1,15 @@
+import uuid
+# import os
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
 # Create your models here.
 
+
+# Upload Paths
+
+def get_image_path(instance):
+    return "%Y/%m/%d/{}".format(instance.id)
 
 class Profile(models.Model):
     LEVEL_CHOICE = (
@@ -21,6 +28,7 @@ class Profile(models.Model):
     Level
     Interests
     '''
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -45,8 +53,8 @@ class Profile(models.Model):
     depertment = models.CharField(max_length=40, null=True, blank=True)
     date_profile_created = models.DateTimeField(auto_now_add=True)
     date_profile_updated = models.DateTimeField(auto_now=True)
-
-    photo = models.ImageField(upload_to='%Y/%m/%d/{}'.format(id))
+    photo = models.ImageField(upload_to=get_image_path)
+    # photo = models.ImageField(upload_to='%Y/%m/%d/{}'.format(id))
 
     # level 
 

@@ -1,1 +1,9 @@
 *.db.sqlite3
+*.pyc
+*.db
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+*.sqlite3
+**/media/**
+**/media_cdn/**
