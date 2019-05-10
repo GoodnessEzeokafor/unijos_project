@@ -1,10 +1,20 @@
 {% extends 'base.html' %}
+
+<!-- Block  Header -->
 {% block header %}      
+
 {% endblock %}    
+<!-- Endblock -->
 {% block content %}
-<form action="." method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="{% if object %}Edit Profile{% else %} Create Profile {% endif %}">
-</form>
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+    <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="{% if object %}Edit Profile{% else %} Create Profile {% endif %}">
+    </form>
+
 {% endblock %}

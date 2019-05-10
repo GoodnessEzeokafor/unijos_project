@@ -1,3 +1,5 @@
+from django.contrib.auth import logout
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import(
     CreateView, 
@@ -11,6 +13,7 @@ from django.urls import (
     reverse, 
     reverse_lazy
 )
+
 from allauth.account.forms import SignupForm
 from .forms import ProfileForm
 from .models import Profile
@@ -21,30 +24,47 @@ from .models import Profile
 class DetailProfileView(DetailView):
     pass
 
-class CreateProfileView(CreateView):
-    model = Profile
-    form_class = ProfileForm
-    success_url = reverse_lazy('profiles:profile_dashboard')
-    template_name = "profile/create.html"
-
+class CreateProfileView(SuccessMessageMixin,CreateView):
+    '''
+    Inherites the CreateView from django.views.generic
+    Responsible for the creation of user profile
+    '''
+    model = Profile  # model
+    form_class = ProfileForm  # form
+    success_url = reverse_lazy('profiles:profile_dashboard') # link to redirect to
+    template_name = "profile/create.html"  # template name
+    success_message = "Profile was created successfully"
     def form_valid(self, form):
+        '''
+        This method basically assigns the currently logged in users to the
+        user field in the Profile method
+        '''
         form.instance.user = self.request.user
         context = super().form_valid(form)
         return context
 
 
-class UpdateProfileView(UpdateView):
+class UpdateProfileView(SuccessMessageMixin,UpdateView):
+    '''
+    The view that enable users to edit their profile
+    '''
+    model = Profile # model
+    form_class = ProfileForm # form
+    success_url = reverse_lazy('profiles:profile_dashboard')  # url to redirect to
+    context_object_name = "profile_update" # context variable
+    template_name = "profile/create.html"  # template name
+    success_message = "Profile was edited successfully"
+
+
+
+class DeleteProfileView(DeleteView):
     model = Profile
-    form_class = ProfileForm
-    success_url = reverse_lazy('profiles:profile_dashboard')
-    context_object_name = "profile_update"
-    template_name = "profile/create.html"
+    template_name = "profile/delete.html"
+    success_url = reverse_lazy("profiles:delete_success")
+    # success_message = "Your Profile was deleted successfully"
 
 
 
-
-class DeleteProfileVIew(DeleteView):
-    pass
 
 
 def dashboard(request):
@@ -58,3 +78,10 @@ def dashboard(request):
         'profile':profile
     }
     return render(request, template_name, context)
+
+
+def delete_success(request):
+    from django.contrib import messages
+    template_name = "profile/delete/thanks.html"
+    messages.success(request, "Profile Deleted Successfully!!")
+    return render(request, template_name, {})

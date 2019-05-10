@@ -3,9 +3,10 @@ from .models import Profile
 
 
 class ProfileForm(forms.ModelForm):
+    '''
+    
+    '''
     class Meta:
-        model = Profile
-        exclude = ("user",)
-
-
+        model = Profile   # model
+        exclude = ("user",)  # fields to be excluded
 

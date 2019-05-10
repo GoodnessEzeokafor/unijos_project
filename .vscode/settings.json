@@ -1,3 +1,13 @@
 {
-    "python.pythonPath": "/home/goodnessezeokafor/.local/share/virtualenvs/unijos_app-whtGxMsb/bin/python"
+    "python.pythonPath": "/home/goodnessezeokafor/.local/share/virtualenvs/unijos_app-whtGxMsb/bin/python",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./profiles",
+        "-p",
+        "*test*.py"
+    ],
+    "python.testing.pyTestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.unittestEnabled": true
 }
