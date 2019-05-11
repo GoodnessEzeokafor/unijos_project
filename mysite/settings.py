@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
     #Local Apps
     # 'account',
-    'post',  # powers the post functionaliti
+    # 'post',  # powers the post functionaliti
     'profiles',  # powers the profile functionality
     'feedback'  # powers the feedback system
 
