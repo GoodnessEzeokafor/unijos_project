@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     # 'account',
     # 'post',  # powers the post functionaliti
     'profiles',  # powers the profile functionality
-    'feedback'  # powers the feedback system
+    'feedback',  # powers the feedback system
+    'blog',
+
 
 ]
 
@@ -118,8 +120,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'megadatabase',
+        'USER': 'mega',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -166,4 +172,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new!
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
-
