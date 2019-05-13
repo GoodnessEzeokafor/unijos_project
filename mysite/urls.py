@@ -22,20 +22,17 @@ from django.conf.urls.static import static
 
 
 from . import views
-# from 
+# from
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home_view, name="home"),
+    path('', include("blog.urls")),
     path('accounts/', include("allauth.urls")),  # Django Allauth
     path('profile/',include("profiles.urls", namespace="profiles")),
-    path('feedback/', include('feedback.urls', namespace="feedback"))
+    path('feedback/', include('feedback.urls', namespace="feedback")),
+    path('blog/', include("blog.urls")),
 ]
 
 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
-
