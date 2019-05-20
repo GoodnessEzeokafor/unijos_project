@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.postgres',
     'django.contrib.staticfiles',
     # Authentication
     'allauth',
@@ -47,8 +48,8 @@ INSTALLED_APPS = [
     # 'account',
     # 'post',  # powers the post functionaliti
     'profiles',  # powers the profile functionality
-    'feedback'  # powers the feedback system
-
+    'feedback',  # powers the feedback system
+    'blog'
 ]
 
 

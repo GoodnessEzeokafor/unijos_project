@@ -10,3 +10,4 @@ class ProfileForm(forms.ModelForm):
         model = Profile   # model
         exclude = ("user",)  # fields to be excluded
 
+

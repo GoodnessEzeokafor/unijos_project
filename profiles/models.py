@@ -9,7 +9,7 @@ from django.conf import settings
 # Upload Paths
 
 def get_image_path(instance, filename):
-    return "user_{}/{}".format(instance, instance.id)
+    return "user_{}/{}".format(instance, instance.profile_id)
 
 class Profile(models.Model):
     '''
@@ -50,7 +50,8 @@ class Profile(models.Model):
         ('400lvl', '400 LEVEL'),
         ('500lvl', '500 LEVEL')
     )
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    profile_id = models.AutoField(primary_key=True)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -71,15 +72,15 @@ class Profile(models.Model):
         choices=LEVEL_CHOICE,
         default= '100lvl'
     )
-    interests = models.CharField(max_length=255, null=True, blank=True)
+    interests = models.CharField(max_length=255, null=True, blank=True, help_text="Seperated by commas e.t.c Music, Maths, Computers")
     department = models.CharField(max_length=40, null=True, blank=True)
+    bio = models.TextField(default='', null=True, blank=True, help_text="Short Bio Of Your Self")
     date_profile_created = models.DateTimeField(auto_now_add=True)
     date_profile_updated = models.DateTimeField(auto_now=True)
     photo = models.ImageField(upload_to=get_image_path)
  
 
     # Methods
-
     def __str__(self):
         '''
         Returns The String Representation Of The Profile Model
@@ -87,4 +88,6 @@ class Profile(models.Model):
         return '{} {}'.format(self.first_name, self.last_name)
         
 
-
+    class Meta:
+        db_table  = "at_profiles"
+    

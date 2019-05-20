@@ -17,6 +17,8 @@ class Feedback(models.Model):
 
 
 
+    class Meta:
+        db_table  = "at_feedbacks"
 
 
 

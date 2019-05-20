@@ -22,13 +22,13 @@ from django.conf.urls.static import static
 
 
 from . import views
-# from 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view, name="home"),
     path('accounts/', include("allauth.urls")),  # Django Allauth
     path('profile/',include("profiles.urls", namespace="profiles")),
-    path('feedback/', include('feedback.urls', namespace="feedback"))
+    path('feedback/', include('feedback.urls', namespace="feedback")),
+    path('upload/', include('blog.urls', namespace='blog'))
 ]
 
 
