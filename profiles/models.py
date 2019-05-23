@@ -1,8 +1,9 @@
 import uuid
 # import os
 from django.db import models
-from django.utils import timezone
 from django.conf import settings
+from django.urls import reverse
+from django.utils import timezone
 # Create your models here.
 
 
@@ -80,14 +81,19 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to=get_image_path)
  
 
+
+    class Meta:
+        db_table  = "at_profiles"
+
     # Methods
     def __str__(self):
         '''
         Returns The String Representation Of The Profile Model
         '''
         return '{} {}'.format(self.first_name, self.last_name)
+
+    def get_absolute_url(self):
+        return reverse("profiles:profile_dashboard", args = [self.profile_id])
         
 
-    class Meta:
-        db_table  = "at_profiles"
     

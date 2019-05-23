@@ -54,6 +54,8 @@ class UpdateProfileView(SuccessMessageMixin,UpdateView):
     context_object_name = "profile_update" # context variable
     template_name = "profile/create.html"  # template name
     success_message = "Profile was edited successfully"
+    # pk_url_kwarg='profile_id'
+
 
 
 

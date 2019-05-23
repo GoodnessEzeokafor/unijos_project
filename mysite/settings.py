@@ -39,14 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.postgres',
     'django.contrib.staticfiles',
+
     # Authentication
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
+    #Third Party Apps
+    'crispy_forms', # for designing pretty django forms
+
     #Local Apps
-    # 'account',
-    # 'post',  # powers the post functionaliti
     'profiles',  # powers the profile functionality
     'feedback',  # powers the feedback system
     'blog'
@@ -112,8 +114,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
-
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+TIME_ZONE = 'Africa/Lagos'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 

@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+<!-- Block Title -->
+{% block head_title %} {{ block.super }} | Feedback {% endblock %}
+<!-- Endblock  -->
+
+<!-- Block Content -->
 {% block content %}
-<h3>Feedback Form</h3>
-<form action="." method="post">
-    {% csrf_token %}
-    {{ form.as_p}}
-    <input type="submit" value="Send E-mail">
-</form>
+<div class="row">
+    <div class="col-md-8 mb-5">
+            <h1>Send A Feedback</h1>
+      
+            <form action="." method="POST" enctype="multipart/form-data" class="b">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input  class="btn btn-block"   type="submit" value="Send E-mail">
+            </form>
+    </div>
+</div>
 {% endblock %}
+<!-- Endblock  -->
