@@ -13,6 +13,7 @@ django-crispy-forms = "*"
 redis = "*"
 pillow = "*"
 psycopg2-binary = "==2.8.2"
+django-taggit = "*"
 
 [requires]
 python_version = "3.5"
