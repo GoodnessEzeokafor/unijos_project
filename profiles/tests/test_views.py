@@ -54,7 +54,31 @@ class ProfileTestView(TestCase):
         response = self.client.get('/profile/create/')
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'profile/create.html')
-    
+        
+    def test_post_create_profile_view(self):
+        login = self.client.login(username='test@email.com', password="testpassword")
+        for profile in Profile.objects.all():
+            profile.delete()
+        response = self.client.post(reverse('profiles:profile_create'), {
+            'user' : self.test_user,
+            'first_name' :'John',
+            'last_name': 'Doe',
+            'level' : '100lvl',
+            'interests' :'Computers, Musics, Physics',
+            'department' : 'Computer Science',
+            'bio' : 'John Doe Bio',
+        })
+
+        self.assertEquals(response.status_code, 200)
+        # self.assertContains(response, self.test_user)
+        self.assertContains(response, 'John')
+        self.assertContains(response, 'Doe')
+        self.assertContains(response, '100lvl')
+        self.assertContains(response, 'Computers, Musics, Physics')
+        self.assertContains(response, 'Computer Science')
+        self.assertContains(response, 'John Doe Bio')
+
+
     def test_get_delete_profile_view(self):
         profile = Profile.objects.get(profile_id=1)
         login = self.client.login(username='test@email.com', password="testpassword")
@@ -66,3 +90,7 @@ class ProfileTestView(TestCase):
 
 
 
+# def	test_post_delete_view(self):
+#     response	=	self.client.get(
+# reverse('post_delete',	args='1'))
+# self.assertEqual(response.status_code,	200)

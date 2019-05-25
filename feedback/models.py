@@ -7,9 +7,9 @@ from profiles.models import Profile
 
 class Feedback(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    subject = models.CharField(max_length=30)
-    email = models.EmailField()
-    detail = models.TextField(blank=True, null=True)
+    subject = models.CharField(max_length=30, help_text='Feedback Topic')
+    email = models.EmailField(help_text='Enter Your Email')
+    detail = models.TextField(blank=True, null=True, verbose_name='Text', help_text='Enter Message')
     date = models.DateTimeField(auto_now_add=True)
     complain = models.BooleanField(default=False)
     happy = models.BooleanField(default=True)
