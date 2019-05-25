@@ -24,6 +24,7 @@ from .models import Profile
 class DetailProfileView(DetailView):
     pass
 
+
 class CreateProfileView(SuccessMessageMixin,CreateView):
     '''
     Inherites the CreateView from django.views.generic
@@ -34,6 +35,8 @@ class CreateProfileView(SuccessMessageMixin,CreateView):
     success_url = reverse_lazy('profiles:profile_dashboard') # link to redirect to
     template_name = "profile/create.html"  # template name
     success_message = "Profile was created successfully"
+
+
     def form_valid(self, form):
         '''
         This method basically assigns the currently logged in users to the

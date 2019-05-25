@@ -14,4 +14,3 @@ class HomeViewTest(SimpleTestCase):
         self.assertEqual(resp.status_code, 302)
         self.assertEqual(resp.url, '/accounts/login')
         self.assertTemplateUsed('home.html')
-        print(resp)
